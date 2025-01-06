@@ -57,3 +57,5 @@ Temporary Items
 # Docs
 docs/.vitepress/cache
 docs/.vitepress/dist
+
+.history

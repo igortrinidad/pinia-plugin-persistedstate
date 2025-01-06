@@ -1,12 +1,19 @@
 import type { Pinia, PiniaPluginContext } from 'pinia'
-import { defineNuxtPlugin, useRuntimeConfig } from '#app'
+import { defineNuxtPlugin } from '#app'
 import { destr } from 'destr'
 import { createPersistence } from './core'
 import { storages } from './storages'
 
 function piniaPlugin(context: PiniaPluginContext) {
-  const config = useRuntimeConfig()
-  const options = config.public.piniaPluginPersistedstate
+  const options = {
+    storage: 'localStorage',
+    auto: false,
+    key: `%id`,
+    debug: false,
+    cookieOptions: {
+      sameSite: 'lax',
+    },
+  }
 
   createPersistence(
     context,
